@@ -11,29 +11,59 @@
     <title>Mars Scrape App</title>
   </head>
   <body>
-    <div class="container-fluid bg-dark text-light text-center"> 
+    <div class="container-fluid bg-dark text-light text-center mt-2"> 
     <h1>Mission to Mars</h1>
     <a class="btn btn-light mb-2 font-weight-bold" href="/scrape" role="button">Scrape</a>
     </div>
-    <h3 class = ml-2>Latest Mars News</h3>
-    <h4 class = ml-2>{{mars.news_title}}</h4>
-    <h5 class = "ml-2 mb-2">{{mars.news_paragraph}}</h5>
+    <h3 class = "ml-2 font-weight-bold">Latest Mars News</h3>
+    <h4 class = ml-2><u>{{mars.news_title}}</u></h4>
+    <h5 class = "ml-3 mb-2 font-weight-light">{{mars.news_paragraph}}</h5>
 
-    <div class = "parent-container d-flex">
+    <div class = "parent-container d-flex mt-2">
         <div class = "container ml-2 mr-2 bg-light border border-dark">
             <h3 class = ml-2>Featured Mars Image</h3>
             <img src = "{{mars.featured_image}}">
         </div>
         <div class = "container mr-2 bg-light border border-dark">
             <h4>Mars Facts</h4>
-            <table>{{html_str}}</table>
+            {{mars.table_str|safe}}
         </div>
     </div>
-    <div class = "container-fluid mt-5 text-center">
-        <h3>Mars Hemispheres</h3>
-        <div class = "container ml-2 mr-2 bg-light border border-dark">
-            <h4>{{mars.image_urls}}</h4>
+
+    <!--This is the start of the gallery of hemispheres-->
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <div class="thumbnail ml-2">
+            <img src="{{mars.image_urls[0]['img_url']}}" style="width:100%">
+            <div class="caption">
+              <p class = "text-center">{{mars.image_urls[0]['title']}}</p>
+            </div>
         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail ml-2">
+            <img src="{{mars.image_urls[1]['img_url']}}" style="width:100%">
+            <div class="caption">
+              <p class = "text-center">{{mars.image_urls[1]['title']}}</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail ml-2">
+            <img src="{{mars.image_urls[2]['img_url']}}" style="width:100%">
+            <div class="caption">
+              <p class = "text-center">{{mars.image_urls[2]['title']}}</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail ml-2">
+            <img src="{{mars.image_urls[3]['img_url']}}" style="width:100%">
+            <div class="caption">
+              <p class = "text-center">{{mars.image_urls[3]['title']}}</p>
+            </div>
+        </div>
+      </div>
     </div>
 
 

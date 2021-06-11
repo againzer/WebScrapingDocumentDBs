@@ -45,7 +45,7 @@ def scrape():
 
     #scrape pic
     pic = soup.find(class_= 'headerimage fade-in')
-    featured_image_url = pic['src']
+    featured_image_url = str(url+pic['src'])
 
     browser.quit()
 
@@ -92,7 +92,7 @@ def scrape():
     hemisphere_names = soup.find_all('h3')
 
 
-    for x in range(1,4):
+    for x in range(0,4):
         
         hemisphere_name = hemisphere_names[x].text
 
@@ -102,7 +102,7 @@ def scrape():
 
         soup = bs(html,'html.parser')
 
-        pic = browser.links.find_by_text('Original')['href']
+        pic = browser.links.find_by_text('Sample')['href']
 
         cerberus_dict = {"title": hemisphere_name ,"img_url": pic}
 
